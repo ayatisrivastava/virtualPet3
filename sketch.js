@@ -9,8 +9,21 @@ var database;
 
 function preload(){
   //load images here
- dogImg = loadImage("images/dogImg.png");
- happyDogImg = loadImage("images/dogImg1.png"); 
+bedRoom = loadImage("virtual pet images/Bed Room.png");
+deadDog = loadImage("virtual pet images/deadDog.png");
+dogImg = loadImage("virtual pet images/dog.png");
+vacChart = loadImage("virtual pet images/dogVaccination.png");
+foodStock = loadImage("virtual pet images/Food Stock.png");
+garden = loadImage("virtual pet image/Garden.png");
+happyDog = loadImage("virtual pet images/Happy.png");
+injection = loadImage("virtual pet images/Injection.png");
+lazyDog = loadImage("virtual pet images/Lazy.png");
+livingRoom = loadImage("virtual pet images/Living Room.png");
+milk = loadImage("virtual pet images/milk.png");
+runningDog = loadImage("virtual pet images/running.png");
+leftDirection = loadImage("virtual pet images/runningLeft.png");
+vaccination = loadImage("virtual pet images/Vaccination.jpg");
+washRoom = loadImage("virtual pet images/Wash Room.png");
 }
 
 function setup() {
@@ -91,7 +104,18 @@ function addFood(){
   })
 }
 
+//read gameState from database
+readState = database.ref('gameState');
+readState.on("value",function(data){
+  gameState = date.val();
+});
 
+//update gameState in database
+function update(state){
+  database.ref('/').update({
+    gameState:state
+  });
+}
 
 
 
